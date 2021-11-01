@@ -1,0 +1,12 @@
+﻿@using UdemyBlazorHiddenVilla_Server.Model
+
+<div class="col-4 border p-2 bg-light offset-1">
+    <h4 class="text-muted">Amenity - @Amenity.Id</h4>
+    <div>@Amenity.Name</div>
+    <div>@Amenity.Description</div>
+</div>
+
+@code {
+    [Parameter]
+    public BlazorAmenity Amenity { get; set; }
+}

@@ -4,18 +4,30 @@
 <h3>We will display hotel rooms and amenities here!</h3>
 <div class="border p-2" style="background-color: azure">
     <h3 class="text-info">Room List [USING COMPONENT]</h3>
-    <div class="container-fluid">
-        <div class="row">
-            @foreach (var room in RoomList)
-            {
-                <IndividualRoom Room="room"></IndividualRoom>
-            }
+    <div class="p-2">
+        <div class="container-fluid">
+            <h4 class="text-info">Hotel Rooms</h4>
+            <div class="row">
+                @foreach (var room in RoomList)
+                {
+                    <IndividualRoom Room="room"></IndividualRoom>
+                }
+            </div>
+            <br />
+            <h4 class="text-info">Hotel Amenities [assignment]</h4>
+            <div class="row">
+                @foreach (var amenity in Amenities)
+                {
+                    <IndividualAminety Amenity="amenity"></IndividualAminety>
+                }
+            </div>
         </div>
     </div>
 </div>
 
 @code {
     List<BlazorRoom> RoomList = new List<BlazorRoom>();
+    List<BlazorAmenity> Amenities = new List<BlazorAmenity>();
 
     protected override void OnInitialized()
     {
@@ -28,7 +40,7 @@
             Price = 100.00,
             IsActive = false,
             RoomProps = new List<BlazorRoomProp>
-        {
+{
                 new BlazorRoomProp { Id = 1, Name = "Sq Ft", Value = "100" },
                 new BlazorRoomProp { Id = 1, Name = "Occupancy", Value = "3" }
             }
@@ -41,10 +53,30 @@
             Price = 70.00,
             IsActive = false,
             RoomProps = new List<BlazorRoomProp>
-        {
+{
                 new BlazorRoomProp { Id = 1, Name = "Sq Ft", Value = "70" },
                 new BlazorRoomProp { Id = 1, Name = "Occupancy", Value = "2" }
             }
+        });
+
+        Amenities.Add(new BlazorAmenity {
+            Id = 111,
+            Name = "Gym",
+            Description = "24x7 gym room is available."
+        });
+
+        Amenities.Add(new BlazorAmenity
+        {
+            Id = 222,
+            Name = "Swimming Pool",
+            Description = "Pool room is open from 6am to 10pm."
+        });
+
+        Amenities.Add(new BlazorAmenity
+        {
+            Id = 333,
+            Name = "Free Breakfast",
+            Description = "Enjoy free breakfast at our hotel."
         });
     }
 }
