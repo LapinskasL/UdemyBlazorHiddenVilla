@@ -2,30 +2,13 @@
 @page "/demoHotel"
 
 <h3>We will display hotel rooms and amenities here!</h3>
-<div class="border p-2">
-    <h2 class="text-info">Room List [USING COMPONENT]</h2>
+<div class="border p-2" style="background-color: azure">
+    <h3 class="text-info">Room List [USING COMPONENT]</h3>
     <div class="container-fluid">
         <div class="row">
             @foreach (var room in RoomList)
             {
-                <div class="col-3 border p-2 bg-light mr-5">
-                    <h5 class="text-muted">Room - @room.Id</h5>
-                    <div>@room.RoomName</div>
-                    <div>@room.Price.ToString("c")</div>
-                    <div>
-                        <input type="checkbox" @bind-value="room.IsActive" @bind-value:event="oninput" checked="@(room.IsActive?"checked":null)" /> Is Active
-                        <div>The room is @(room.IsActive?"Active":"Inactive")</div>
-                    </div>
-                    @if (room.IsActive)
-                    {
-                        foreach (var roomProp in room.RoomProps)
-                        {
-                            <div>@roomProp.Name - @roomProp.Value</div>
-                        }
-                    }
-                    <button class="btn btn-danger">Delete</button>
-                    <button class="btn btn-primary">Edit</button>
-                </div>
+                <IndividualRoom Room="room"></IndividualRoom>
             }
         </div>
     </div>
