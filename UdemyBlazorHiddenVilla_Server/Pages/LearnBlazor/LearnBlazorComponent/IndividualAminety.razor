@@ -1,6 +1,6 @@
 ﻿@using UdemyBlazorHiddenVilla_Server.Model
 
-<div class="col-4 border p-2 bg-light offset-1">
+<div class="col-4 border p-2 bg-light offset-1" @onclick="AmenitySelected">
     <h4 class="text-muted">Amenity - @Amenity.Id</h4>
     <div>@Amenity.Name</div>
     <div>@Amenity.Description</div>
@@ -9,4 +9,12 @@
 @code {
     [Parameter]
     public BlazorAmenity Amenity { get; set; }
+
+    [Parameter]
+    public EventCallback<string> OnAmenitySelectionChanged { get; set; }
+
+    protected async Task AmenitySelected()
+    {
+        await OnAmenitySelectionChanged.InvokeAsync(Amenity.Name);
+    }
 }

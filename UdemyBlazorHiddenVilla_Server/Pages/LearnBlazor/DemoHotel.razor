@@ -19,15 +19,18 @@
             <div class="row">
                 @foreach (var amenity in Amenities)
                 {
-                    <IndividualAminety Amenity="amenity"></IndividualAminety>
+                    <IndividualAminety OnAmenitySelectionChanged="AmenitySelectionChanged" Amenity="amenity"></IndividualAminety>
                 }
             </div>
         </div>
     </div>
 </div>
+<span class="text-muted">Selected amenity: @SelectedAmenity</span>
 
 @code {
     public int SelectedRooms { get; set; } = 0;
+    public string SelectedAmenity { get; set; }
+
     List<BlazorRoom> RoomList = new List<BlazorRoom>();
     List<BlazorAmenity> Amenities = new List<BlazorAmenity>();
 
@@ -61,7 +64,8 @@
             }
         });
 
-        Amenities.Add(new BlazorAmenity {
+        Amenities.Add(new BlazorAmenity
+        {
             Id = 111,
             Name = "Gym",
             Description = "24x7 gym room is available."
@@ -92,5 +96,10 @@
         {
             SelectedRooms--;
         }
+    }
+
+    protected void AmenitySelectionChanged(string amenity)
+    {
+        SelectedAmenity = amenity;
     }
 }
