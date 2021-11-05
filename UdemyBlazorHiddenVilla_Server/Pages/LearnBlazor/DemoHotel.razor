@@ -19,7 +19,10 @@
             <div class="row">
                 @foreach (var amenity in Amenities)
                 {
-                    <IndividualAminety OnAmenitySelectionChanged="AmenitySelectionChanged" Amenity="amenity"></IndividualAminety>
+                    <IndividualAminety OnAmenitySelectionChanged="AmenitySelectionChanged" Amenity="amenity">
+                        <FragmentOne>#1</FragmentOne>
+                        <FragmentTwo>#2</FragmentTwo>
+                    </IndividualAminety>
                 }
             </div>
         </div>
