@@ -8,17 +8,11 @@
     <DangerChildContent>Danger Content from Render Fragment! WooHOO!</DangerChildContent>
 </ChildComponent>
 
-<AnotherChildComponent InputAttributes="InputAttributesFromParent"></AnotherChildComponent>
+<AnotherChildComponent placeholder="Placeholder default"></AnotherChildComponent>
 <p><b>@messageText</b></p>
 
 @code {
 
-    public Dictionary<string, object> InputAttributesFromParent { get; set; } = new Dictionary<string, object>()
-    {
-        { "required", "required"},
-        { "placeholder", "Enter the Room Name From Parent"},
-        { "maxlegth", 5}
-    };
 
     private string messageText = "";
 
